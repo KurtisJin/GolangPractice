@@ -31,10 +31,10 @@ func main() {
 	person2.print()
 }
 
-func (h human) print() {
-	fmt.Println(h)
+func (pointerToHuman *human) updateName(newFirstName string) {
+	(*pointerToHuman).firstName = newFirstName
 }
 
-func (h human) updateName(newFirstName string) {
-	h.firstName = newFirstName
+func (h human) print() {
+	fmt.Println(h)
 }
