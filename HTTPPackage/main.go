@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"io"
 	"net/http"
 	"os"
 )
@@ -18,6 +19,6 @@ func getResonse() {
 		os.Exit(1)
 	} else {
 
-		fmt.Println(resp.Body)
+		io.Copy(os.Stdout, resp.Body)
 	}
 }
