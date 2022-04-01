@@ -7,6 +7,8 @@ import (
 	"os"
 )
 
+type logWriter struct{}
+
 func main() {
 	getResonse()
 }
@@ -20,5 +22,12 @@ func getResonse() {
 	} else {
 
 		io.Copy(os.Stdout, resp.Body)
+
 	}
+}
+
+func (logWriter) Write(bs []byte) (int, error) {
+	fmt.Println(string(bs))
+	fmt.Println("Just wrote this many bytes:", len(bs))
+	return len(bs), nil
 }
